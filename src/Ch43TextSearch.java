@@ -112,4 +112,23 @@ public class Ch43TextSearch {
         throw new UnsupportedOperationException();
     }
     // ==== END
+
+    // ==== EX 43.9 | The prefix table | Practice
+    // PROMPT: Write `static int[] prefixTable(String pattern)` that returns an array where entry `i` is the length of the longest proper prefix of `pattern.substring(0, i + 1)` that is also its suffix. Keep the current match length `k`; on a mismatch fall back to `table[k - 1]` instead of starting over.
+    // EXAMPLE: `"abacabab"` -> `[0, 0, 1, 0, 1, 2, 3, 2]`
+    // BIGO: O(M) time and space: `k` rises by at most one per character and every fall-back lowers it, so the total work is linear.
+    static int[] prefixTable(String pattern) {
+        throw new UnsupportedOperationException();
+    }
+    // ==== END
+
+    // ==== EX 43.10 | Search with the prefix table | Practice
+    // PROMPT: Write `static List<Integer> prefixSearch(String text, String pattern)` that returns every start index of `pattern` (non-empty) in `text`, overlaps included, in O(N + M): build the prefix table of `pattern` (43.9), then walk `text` once, keeping the matched length `k` and falling back through the table on a mismatch or after a full match.
+    // EXAMPLE: `"abababca", "abab"` -> `[0, 2]`
+    // BIGO: O(N + M) worst case, O(M) space: the text pointer never moves back, and the table says how much of the match survives a mismatch.
+    // NOTE: Unlike Rabin-Karp (43.4), this is linear even in the worst case and needs no hashing or verification.
+    static List<Integer> prefixSearch(String text, String pattern) {
+        throw new UnsupportedOperationException();
+    }
+    // ==== END
 }

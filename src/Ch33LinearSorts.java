@@ -1,0 +1,44 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+/** Chapter 33: Linear-time sorts. */
+public class Ch33LinearSorts {
+    // ==== EX 33.1 | Counting sort | Core
+    // PROMPT: Every value in `nums` is an integer from `0` to `maxValue`. Write `static int[] countingSort(int[] nums, int maxValue)` that returns a new sorted array by counting how often each value occurs, with no comparisons between values.
+    // EXAMPLE: `[3, 0, 2, 3, 1], 3` -> `[0, 1, 2, 3, 3]`
+    // BIGO: O(N + K) time and O(K) space for keys 0..K: one pass to count, one pass over the counts to write the output.
+    static int[] countingSort(int[] nums, int maxValue) {
+        throw new UnsupportedOperationException();
+    }
+    // ==== END
+
+    // ==== EX 33.2 | Sort to a given key order | Core
+    // PROMPT: `order` lists a few distinct keys, and every value in `values` is one of them. Write `static int[] sortByOrder(int[] values, int[] order)` that returns the values grouped in the order of `order`, using one counting pass and a map of counts.
+    // EXAMPLE: `[2, 0, 1, 2, 0], [2, 0, 1]` -> `[2, 2, 0, 0, 1]`
+    // BIGO: O(N + K) time, O(K) space for K keys: count each key once, then write the keys out in the order asked for.
+    static int[] sortByOrder(int[] values, int[] order) {
+        throw new UnsupportedOperationException();
+    }
+    // ==== END
+
+    // ==== EX 33.3 | Radix sort | Practice
+    // PROMPT: Write `static int[] radixSort(int[] nums)` that sorts non-negative integers and returns a new array, digit by digit from the lowest: each pass is a stable counting sort on the current digit (count, prefix sums, then place from the back).
+    // EXAMPLE: `[329, 57, 640, 4, 1000, 72]` -> `[4, 57, 72, 329, 640, 1000]`
+    // BIGO: O(D * (N + 10)) time for D-digit keys, O(N) space: each digit pass is a stable distribution, so earlier digits stay in order within equal later ones.
+    static int[] radixSort(int[] nums) {
+        throw new UnsupportedOperationException();
+    }
+    // ==== END
+
+    // ==== EX 33.4 | Bucket sort | Practice
+    // PROMPT: Every value in `values` is a double in `[0, 1)`. Write `static double[] bucketSort(double[] values)` that returns a new sorted array: put each value `v` into bucket `(int) (v * n)` of `n = values.length` buckets, sort each (small) bucket, and join them.
+    // EXAMPLE: `[0.42, 0.07, 0.93, 0.5, 0.31]` -> `[0.07, 0.31, 0.42, 0.5, 0.93]`
+    // BIGO: O(N) expected time for evenly spread values, O(N) space: each of the N buckets gets about one value, so sorting the buckets is cheap; the worst case is one full bucket.
+    static double[] bucketSort(double[] values) {
+        throw new UnsupportedOperationException();
+    }
+    // ==== END
+}

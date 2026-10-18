@@ -109,4 +109,72 @@ public class Ch22SortedSearch {
         throw new UnsupportedOperationException();
     }
     // ==== END
+
+    // ==== EX 22.11 | Search a rotated sorted array | Practice
+    // PROMPT: `nums` held distinct values in ascending order and was then rotated (`{15, 18, 22, 3, 7, 9}`). Write `static int searchRotated(int[] nums, int target)` that returns the index of `target` or `-1`, in O(log N): at each step decide which half is sorted, then whether `target` lies inside it.
+    // EXAMPLE: `[15, 18, 22, 3, 7, 9], 7` -> `4`; `[15, 18, 22, 3, 7, 9], 10` -> `-1`
+    // BIGO: O(log N) time, O(1) space: at every midpoint one half is in order, and a range check on that half decides which way to go.
+    static int searchRotated(int[] nums, int target) {
+        throw new UnsupportedOperationException();
+    }
+    // ==== END
+
+    // ==== EX 22.12 | Find a peak | Core
+    // PROMPT: `nums` is non-empty and no two neighbours are equal. Write `static int findPeak(int[] nums)` that returns the index of a value larger than both neighbours (past the ends counts as smaller), in O(log N): compare `nums[mid]` with `nums[mid + 1]` and keep the rising side. Any peak is accepted.
+    // EXAMPLE: `[1, 3, 2, 5, 4]` -> `3` (`1` would also be accepted)
+    // BIGO: O(log N) time, O(1) space: if the next value is larger, a peak must lie to the right, because the values cannot rise forever.
+    static int findPeak(int[] nums) {
+        throw new UnsupportedOperationException();
+    }
+    // ==== END
+
+    // ==== EX 22.13 | Binary search on the answer | Practice
+    // PROMPT: Write `static int smallestMaxLoad(int[] loads, int k)` that splits the positive `loads`, in order, into at most `k` contiguous groups so the largest group sum is as small as possible, and returns that sum. Binary search the answer between the largest load and the total; to test a limit, fill groups greedily and count them.
+    // EXAMPLE: `[4, 9, 3, 6, 2, 8], 3` -> `13` (`[4, 9] [3, 6, 2] [8]`)
+    // BIGO: O(N log S) time for loads summing to S, O(1) space: whether a limit works is monotonic, so binary search finds the smallest one, and each check is a greedy pass.
+    static int smallestMaxLoad(int[] loads, int k) {
+        throw new UnsupportedOperationException();
+    }
+
+    static int groupsNeeded(int[] loads, int limit) {
+        throw new UnsupportedOperationException();
+    }
+    // ==== END
+
+    // ==== EX 22.14 | Index equal to value | Core
+    // PROMPT: `nums` holds distinct integers in ascending order. Write `static int fixedPoint(int[] nums)` that returns the smallest index `i` with `nums[i] == i`, or `-1`, in O(log N).
+    // EXAMPLE: `[-4, -1, 2, 5, 9]` -> `2`; `[1, 2, 3]` -> `-1`
+    // BIGO: O(log N) time, O(1) space: with distinct sorted integers, `nums[i] - i` never decreases, so the matches form one block that binary search can find.
+    static int fixedPoint(int[] nums) {
+        throw new UnsupportedOperationException();
+    }
+    // ==== END
+
+    // ==== EX 22.15 | Median of two sorted arrays | Stretch
+    // PROMPT: `a` and `b` are sorted and not both empty. Write `static double medianOfTwo(int[] a, int[] b)` that returns the median of all their values, in O(log min(M, N)) without merging: binary search how many values of the shorter array go in the lower half, and check the four values around the two cuts.
+    // EXAMPLE: `[1, 4, 9], [2, 3]` -> `3.0`; `[1, 4], [2, 3]` -> `2.5`
+    // BIGO: O(log min(M, N)) time, O(1) space: binary search the cut in the shorter array; the cut in the other follows, and four border values say which way to move.
+    static double medianOfTwo(int[] a, int[] b) {
+        throw new UnsupportedOperationException();
+    }
+    // ==== END
+
+    // ==== EX 22.16 | Weighted random pick | Practice
+    // PROMPT: Build `static class WeightedPicker` for positive integer weights with `WeightedPicker(int[] weights)`, `int total()` and `int pick(int r)`: for `r` in `[0, total())`, `pick` returns the index whose range of prefix sums holds `r`, found by binary search. Then `pick(random.nextInt(picker.total()))` returns index `i` with probability `weights[i] / total`.
+    // EXAMPLE: `new WeightedPicker(new int[] {3, 1, 2})`: `pick(0)` -> `0`; `pick(3)` -> `1`; `pick(5)` -> `2`
+    // BIGO: O(N) to build, O(log N) per pick, O(N) space: the prefix sums split `[0, total)` into one range per index, and binary search finds the range holding `r`.
+    static class WeightedPicker {
+        private final int[] prefix;
+
+        WeightedPicker(int[] weights) {
+            throw new UnsupportedOperationException();
+        }
+
+        int total() { throw new UnsupportedOperationException(); }
+
+        int pick(int r) {
+            throw new UnsupportedOperationException();
+        }
+    }
+    // ==== END
 }

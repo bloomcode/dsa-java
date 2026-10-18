@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.List;
 
 /** Chapter 22 tests, one class per exercise. */
@@ -111,5 +112,79 @@ class Ex22_10Test {
         Check.eq(Ch22SortedSearch.intSqrt(0), 0L);
         Check.eq(Ch22SortedSearch.intSqrt(1), 1L);
         Check.eq(Ch22SortedSearch.intSqrt(Long.MAX_VALUE), 3037000499L);
+    }
+}
+
+class Ex22_11Test {
+    public static void run() {
+        int[] nums = {15, 18, 22, 3, 7, 9};
+        for (int i = 0; i < nums.length; i++) Check.eq(Ch22SortedSearch.searchRotated(nums, nums[i]), i);
+        Check.eq(Ch22SortedSearch.searchRotated(nums, 10), -1);
+        Check.eq(Ch22SortedSearch.searchRotated(nums, 1), -1);
+        Check.eq(Ch22SortedSearch.searchRotated(new int[0], 4), -1);
+        Check.eq(Ch22SortedSearch.searchRotated(new int[] {5}, 5), 0);
+        Check.eq(Ch22SortedSearch.searchRotated(new int[] {1, 2, 3}, 3), 2);
+        Check.eq(Ch22SortedSearch.searchRotated(new int[] {3, 1}, 1), 1);
+    }
+}
+
+class Ex22_12Test {
+    public static void run() {
+        Check.eq(Ch22SortedSearch.findPeak(new int[] {1, 3, 2, 5, 4}), 3);
+        int[][] cases = {{7}, {1, 2, 3, 4}, {4, 3, 2, 1}, {2, 9, 1, 8, 0, 7, 6}, {5, 1}};
+        for (int[] nums : cases) {
+            int i = Ch22SortedSearch.findPeak(nums);
+            Check.yes((i == 0 || nums[i - 1] < nums[i]) && (i == nums.length - 1 || nums[i + 1] < nums[i]));
+        }
+    }
+}
+
+class Ex22_13Test {
+    public static void run() {
+        int[] loads = {4, 9, 3, 6, 2, 8};
+        Check.eq(Ch22SortedSearch.smallestMaxLoad(loads, 3), 13);
+        Check.eq(Ch22SortedSearch.smallestMaxLoad(loads, 1), 32);
+        Check.eq(Ch22SortedSearch.smallestMaxLoad(loads, 6), 9);
+        Check.eq(Ch22SortedSearch.smallestMaxLoad(new int[] {5, 5, 5, 5}, 2), 10);
+        Check.eq(Ch22SortedSearch.smallestMaxLoad(new int[] {7}, 3), 7);
+    }
+}
+
+class Ex22_14Test {
+    public static void run() {
+        Check.eq(Ch22SortedSearch.fixedPoint(new int[] {-4, -1, 2, 5, 9}), 2);
+        Check.eq(Ch22SortedSearch.fixedPoint(new int[] {1, 2, 3}), -1);
+        Check.eq(Ch22SortedSearch.fixedPoint(new int[] {0, 1, 2}), 0);
+        Check.eq(Ch22SortedSearch.fixedPoint(new int[] {-3, -1, 1, 3, 4}), 3);
+        Check.eq(Ch22SortedSearch.fixedPoint(new int[0]), -1);
+        Check.eq(Ch22SortedSearch.fixedPoint(new int[] {-5, 0, 7}), -1);
+    }
+}
+
+class Ex22_15Test {
+    public static void run() {
+        Check.eq(Ch22SortedSearch.medianOfTwo(new int[] {1, 4, 9}, new int[] {2, 3}), 3.0);
+        Check.eq(Ch22SortedSearch.medianOfTwo(new int[] {1, 4}, new int[] {2, 3}), 2.5);
+        Check.eq(Ch22SortedSearch.medianOfTwo(new int[0], new int[] {5}), 5.0);
+        Check.eq(Ch22SortedSearch.medianOfTwo(new int[] {1, 2}, new int[] {3, 4, 5, 6}), 3.5);
+        Check.eq(Ch22SortedSearch.medianOfTwo(new int[] {7}, new int[] {1, 2, 3}), 2.5);
+        Check.eq(Ch22SortedSearch.medianOfTwo(new int[] {10, 20, 30}, new int[0]), 20.0);
+        Check.eq(Ch22SortedSearch.medianOfTwo(new int[] {1, 1}, new int[] {1, 1}), 1.0);
+    }
+}
+
+class Ex22_16Test {
+    public static void run() {
+        Ch22SortedSearch.WeightedPicker picker = new Ch22SortedSearch.WeightedPicker(new int[] {3, 1, 2});
+        Check.eq(picker.total(), 6);
+        int[] picks = new int[6];
+        for (int r = 0; r < 6; r++) picks[r] = picker.pick(r);
+        Check.eq(picks, new int[] {0, 0, 0, 1, 2, 2});
+        int[] weights = {5, 1, 4, 2};
+        picker = new Ch22SortedSearch.WeightedPicker(weights);
+        int[] counts = new int[weights.length];
+        for (int r = 0; r < picker.total(); r++) counts[picker.pick(r)]++;
+        Check.eq(counts, weights);
+        Check.eq(new Ch22SortedSearch.WeightedPicker(new int[] {9}).pick(8), 0);
     }
 }

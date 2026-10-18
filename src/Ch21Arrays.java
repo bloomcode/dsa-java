@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -222,6 +223,69 @@ public class Ch21Arrays {
         void insertAtEnd(int value) {
             throw new UnsupportedOperationException();
         }
+    }
+    // ==== END
+
+    // ==== EX 21.20 | Majority value by voting | Practice
+    // PROMPT: A value fills more than half of `nums`. Write `static int majority(int[] nums)` in one pass with O(1) extra space: keep a candidate and a count; a matching value adds a vote, a different one removes a vote, and an empty count picks the next value as the candidate.
+    // EXAMPLE: `{3, 1, 3, 3, 2, 3}` -> `3`
+    // BIGO: O(N) time, O(1) space: each vote cancels against a different value, and the majority outlasts every cancellation.
+    static int majority(int[] nums) {
+        throw new UnsupportedOperationException();
+    }
+    // ==== END
+
+    // ==== EX 21.21 | Products of everything but self | Core
+    // PROMPT: Write `static long[] productsExceptSelf(int[] nums)` returning, for each index, the product of every other value, without using division (so zeros need no special case).
+    // EXAMPLE: `{2, 3, 4, 5}` -> `[60, 40, 30, 24]`
+    // BIGO: O(N) time: one pass left to right for the product before each index, one pass right to left for the product after it.
+    static long[] productsExceptSelf(int[] nums) {
+        throw new UnsupportedOperationException();
+    }
+    // ==== END
+
+    // ==== EX 21.22 | Longest mountain run | Core
+    // PROMPT: A mountain is a run that strictly rises and then strictly falls, with at least one step each way. Write `static int longestMountain(int[] nums)` returning the length of the longest mountain, or 0 if there is none. Find each tip, then walk down both sides.
+    // EXAMPLE: `{1, 3, 5, 4, 2, 2, 6, 1}` -> `5`
+    // BIGO: O(N): each tip is found once, and the climbs and descents around different tips never overlap by more than one value.
+    static int longestMountain(int[] nums) {
+        throw new UnsupportedOperationException();
+    }
+    // ==== END
+
+    // ==== EX 21.23 | Smallest amount the coins cannot make | Practice
+    // PROMPT: Each coin in `coins` (positive values, repeats allowed) can be used at most once. Write `static long smallestUnmakeable(int[] coins)` returning the smallest positive amount that no selection of coins adds up to. Sort a copy, then track the largest amount `reach` that every smaller amount can be made up to.
+    // EXAMPLE: `{2, 1, 6}` -> `4`; `{1, 1, 3}` -> `6`
+    // BIGO: O(N log N) for the sort, then one pass: if every amount up to `reach` can be paid and the next coin is at most reach + 1, every amount up to reach + coin can be paid.
+    static long smallestUnmakeable(int[] coins) {
+        throw new UnsupportedOperationException();
+    }
+    // ==== END
+
+    // ==== EX 21.24 | Lowest missing positive, in place | Stretch
+    // PROMPT: Write `static int lowestMissingPositive(int[] nums)` returning the smallest positive integer not in `nums`, in O(N) time with no extra array. Rearrange in place so that value `v` (when 1 <= v <= N) sits at index `v - 1`; then the first index whose value is wrong gives the answer.
+    // EXAMPLE: `{4, -2, 1, 9, 2}` -> `3`; `{2, 3}` -> `1`
+    // BIGO: O(N) time and O(1) extra space: each swap puts one value in its home slot for good, so there are at most N swaps.
+    static int lowestMissingPositive(int[] nums) {
+        throw new UnsupportedOperationException();
+    }
+    // ==== END
+
+    // ==== EX 21.25 | Missing numbers in 1..n | Core
+    // PROMPT: `nums` holds distinct values from 1 to `n`. Write `static List<Integer> missingFromRange(int[] nums, int n)` returning the values in 1..n that are absent, in increasing order, using an array of `n + 1` marks rather than sorting.
+    // EXAMPLE: `{4, 1, 6}, 6` -> `[2, 3, 5]`
+    // BIGO: O(N) time and O(N) space: one pass marks what is present, one pass collects what is not.
+    static List<Integer> missingFromRange(int[] nums, int n) {
+        throw new UnsupportedOperationException();
+    }
+    // ==== END
+
+    // ==== EX 21.26 | First repeat, using the array as its own table | Practice
+    // PROMPT: Every value in `nums` is between 1 and `nums.length`. Write `static int firstRepeatInPlace(int[] nums)` returning the value whose second appearance comes first, or -1, using no extra structure: when you meet `v`, flip `nums[v - 1]` negative; finding it already negative means `v` is a repeat. Restore the signs before returning.
+    // EXAMPLE: `{3, 1, 4, 4, 1}` -> `4`; `{1, 2, 3}` -> `-1`
+    // BIGO: O(N) time, O(1) extra space: the sign of `nums[v - 1]` records whether `v` has been seen.
+    static int firstRepeatInPlace(int[] nums) {
+        throw new UnsupportedOperationException();
     }
     // ==== END
 }

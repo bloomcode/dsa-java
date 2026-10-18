@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.PriorityQueue;
 
@@ -101,6 +102,33 @@ public class Ch52Heaps {
     // EXAMPLE: `{{1, 4, 7}, {2, 5}, {0, 9}}` -> `[0, 1, 2, 4, 5, 7, 9]`
     // BIGO: O(N log K) for N total values across K lists.
     static List<Integer> mergeKSorted(int[][] lists) {
+        throw new UnsupportedOperationException();
+    }
+    // ==== END
+
+    // ==== EX 52.9 | Running median | Practice
+    // PROMPT: Build `static class RunningMedian` with `void add(int x)` and `double median()` (at least one value has been added). Keep the lower half in a max-heap and the upper half in a min-heap (two `PriorityQueue<Integer>`), rebalancing so the lower half has the same size or one more.
+    // EXAMPLE: add 5 -> `5.0`; add 15 -> `10.0`; add 1 -> `5.0`; add 3 -> `4.0`
+    // BIGO: O(log N) per `add`, O(1) per `median`, O(N) space: a max-heap holds the lower half and a min-heap the upper half, and their tops straddle the median.
+    static class RunningMedian {
+        private final PriorityQueue<Integer> low = new PriorityQueue<>(Comparator.reverseOrder()), high = new PriorityQueue<>();
+
+        void add(int x) {
+            throw new UnsupportedOperationException();
+        }
+
+        double median() {
+            throw new UnsupportedOperationException();
+        }
+    }
+    // ==== END
+
+    // ==== EX 52.10 | Sort a nearly sorted array with a heap | Practice
+    // PROMPT: Every value in `nums` is at most `k` positions from where it belongs in sorted order. Write `static int[] sortNearlySorted(int[] nums, int k)` that returns a new sorted array in O(N log K): keep a `PriorityQueue` of the next `k + 1` values and repeatedly move its smallest to the output.
+    // EXAMPLE: `[3, 1, 2, 6, 4, 5, 9, 7, 8], 2` -> `[1, 2, 3, 4, 5, 6, 7, 8, 9]`
+    // BIGO: O(N log K) time, O(K) space: the smallest remaining value is always among the next K + 1, so a heap of that size can hand it out.
+    // NOTE: Compare 31.16, which handles the same input with insertion sort in O(N * K).
+    static int[] sortNearlySorted(int[] nums, int k) {
         throw new UnsupportedOperationException();
     }
     // ==== END

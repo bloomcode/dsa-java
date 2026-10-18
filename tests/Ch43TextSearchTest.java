@@ -89,3 +89,24 @@ class Ex43_8Test {
         Check.eq(Ch43TextSearch.longestRepeat("aaaa"), "aaa");
     }
 }
+
+class Ex43_9Test {
+    public static void run() {
+        Check.eq(Ch43TextSearch.prefixTable("abacabab"), new int[] {0, 0, 1, 0, 1, 2, 3, 2});
+        Check.eq(Ch43TextSearch.prefixTable("aaaa"), new int[] {0, 1, 2, 3});
+        Check.eq(Ch43TextSearch.prefixTable(""), new int[0]);
+        Check.eq(Ch43TextSearch.prefixTable("abcd"), new int[] {0, 0, 0, 0});
+        Check.eq(Ch43TextSearch.prefixTable("aabaaab"), new int[] {0, 1, 0, 1, 2, 2, 3});
+    }
+}
+
+class Ex43_10Test {
+    public static void run() {
+        Check.eq(Ch43TextSearch.prefixSearch("abababca", "abab"), List.of(0, 2));
+        Check.eq(Ch43TextSearch.prefixSearch("aaaa", "aa"), List.of(0, 1, 2));
+        Check.eq(Ch43TextSearch.prefixSearch("abc", "d"), List.of());
+        Check.eq(Ch43TextSearch.prefixSearch("ab", "abc"), List.of());
+        Check.eq(Ch43TextSearch.prefixSearch("xabcabcx", "abcx"), List.of(4));
+        Check.eq(Ch43TextSearch.prefixSearch("", "a"), List.of());
+    }
+}

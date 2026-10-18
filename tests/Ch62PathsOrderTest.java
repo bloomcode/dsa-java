@@ -46,3 +46,35 @@ class Ex62_3Test {
         Check.eq(Ch62PathsOrder.topologicalOrder(Ch62PathsOrderTest.graph("a:b", "b:a")), null);
     }
 }
+
+class Ex62_4Test {
+    public static void run() {
+        int inf = Integer.MAX_VALUE;
+        Check.eq(Ch62PathsOrder.bellmanFord(4, new int[][] {{0, 1, 4}, {0, 2, 1}, {2, 1, -2}, {1, 3, 1}}, 0), new int[] {0, -1, 1, 0});
+        Check.eq(Ch62PathsOrder.bellmanFord(3, new int[][] {{0, 1, 5}}, 0), new int[] {0, 5, inf});
+        Check.eq(Ch62PathsOrder.bellmanFord(1, new int[0][], 0), new int[] {0});
+        Check.eq(Ch62PathsOrder.bellmanFord(3, new int[][] {{0, 1, 1}, {1, 2, -1}, {2, 1, -1}}, 0), null);
+        Check.eq(Ch62PathsOrder.bellmanFord(3, new int[][] {{1, 2, -1}, {2, 1, -1}}, 0), new int[] {0, inf, inf});
+    }
+}
+
+class Ex62_5Test {
+    public static void run() {
+        Check.yes(Ch62PathsOrder.hasProfitableLoop(new double[][] {{1, 0.9, 0.8}, {1.2, 1, 0.7}, {1.3, 1.4, 1}}));
+        Check.no(Ch62PathsOrder.hasProfitableLoop(new double[][] {{1, 0.5}, {1.9, 1}}));
+        Check.no(Ch62PathsOrder.hasProfitableLoop(new double[][] {{1, 2}, {0.5, 1}}));
+        Check.no(Ch62PathsOrder.hasProfitableLoop(new double[][] {{1}}));
+        Check.yes(Ch62PathsOrder.hasProfitableLoop(new double[][] {{1, 2, 0.1}, {0.4, 1, 3}, {0.2, 0.1, 1}}));
+    }
+}
+
+class Ex62_6Test {
+    public static void run() {
+        String[] grid = {"....#", ".##.#", "....."};
+        Check.eq(Ch62PathsOrder.gridPathLength(grid, new int[] {0, 0}, new int[] {2, 4}), 6);
+        Check.eq(Ch62PathsOrder.gridPathLength(grid, new int[] {0, 0}, new int[] {0, 0}), 0);
+        Check.eq(Ch62PathsOrder.gridPathLength(grid, new int[] {0, 3}, new int[] {2, 4}), 3);
+        Check.eq(Ch62PathsOrder.gridPathLength(new String[] {".#.", ".#.", "..."}, new int[] {0, 0}, new int[] {0, 2}), 6);
+        Check.eq(Ch62PathsOrder.gridPathLength(new String[] {".#", "#."}, new int[] {0, 0}, new int[] {1, 1}), -1);
+    }
+}

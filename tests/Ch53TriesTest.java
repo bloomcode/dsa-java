@@ -95,3 +95,71 @@ class Ex53_9Test {
         Check.yes(t.root.children.isEmpty());
     }
 }
+
+class Ex53_10Test {
+    public static void run() {
+        Check.eq(Ch53Tries.prefixCounts(new String[] {"car", "card", "care", "dog"}, new String[] {"car", "ca", "d", "x"}), new int[] {3, 3, 1, 0});
+        Check.eq(Ch53Tries.prefixCounts(new String[] {"a", "a", "ab"}, new String[] {"a", "ab", "abc", ""}), new int[] {3, 1, 0, 3});
+        Check.eq(Ch53Tries.prefixCounts(new String[0], new String[] {"a"}), new int[] {0});
+    }
+}
+
+class Ex53_11Test {
+    public static void run() {
+        Check.eq(Ch53Tries.trieSort(new String[] {"pear", "apple", "pea", "app"}), List.of("app", "apple", "pea", "pear"));
+        Check.eq(Ch53Tries.trieSort(new String[0]), List.of());
+        Check.eq(Ch53Tries.trieSort(new String[] {"b", "a", "b"}), List.of("a", "b", "b"));
+        Check.eq(Ch53Tries.trieSort(new String[] {"ba", "b", "abc", "ab"}), List.of("ab", "abc", "b", "ba"));
+    }
+}
+
+class Ex53_12Test {
+    public static void run() {
+        String[] words = {"bad", "bed", "bid", "bud", "bead", "bad"};
+        Check.eq(Ch53Tries.wildcardMatches(words, "b.d"), List.of("bad", "bed", "bid", "bud"));
+        Check.eq(Ch53Tries.wildcardMatches(words, ".."), List.of());
+        Check.eq(Ch53Tries.wildcardMatches(words, "b..d"), List.of("bead"));
+        Check.eq(Ch53Tries.wildcardMatches(words, "bad"), List.of("bad"));
+        Check.eq(Ch53Tries.wildcardMatches(words, ".e."), List.of("bed"));
+    }
+}
+
+class Ex53_13Test {
+    public static void run() {
+        Check.eq(Ch53Tries.substringChecks("banana", new String[] {"nan", "ana", "nab", ""}), new boolean[] {true, true, false, true});
+        Check.eq(Ch53Tries.substringChecks("banana", new String[] {"banana", "bananas", "a"}), new boolean[] {true, false, true});
+        Check.eq(Ch53Tries.substringChecks("", new String[] {""}), new boolean[] {true});
+        Check.eq(Ch53Tries.substringChecks("", new String[] {"a"}), new boolean[] {false});
+    }
+}
+
+class Ex53_14Test {
+    public static void run() {
+        Check.eq(Ch53Tries.shortestUniquePrefixes(new String[] {"zebra", "dog", "duck", "dove"}), List.of("z", "dog", "du", "dov"));
+        Check.eq(Ch53Tries.shortestUniquePrefixes(new String[] {"a", "b"}), List.of("a", "b"));
+        Check.eq(Ch53Tries.shortestUniquePrefixes(new String[] {"abc"}), List.of("a"));
+        Check.eq(Ch53Tries.shortestUniquePrefixes(new String[] {"ab", "ac", "bd"}), List.of("ab", "ac", "b"));
+        Check.eq(Ch53Tries.shortestUniquePrefixes(new String[0]), List.of());
+    }
+}
+
+class Ex53_15Test {
+    public static void run() {
+        String[] words = {"good", "home", "gone", "hood", "hoof", "in"};
+        Check.eq(Ch53Tries.keypadWords("4663", words), List.of("gone", "good", "home", "hood", "hoof"));
+        Check.eq(Ch53Tries.keypadWords("46", words), List.of("in"));
+        Check.eq(Ch53Tries.keypadWords("2", new String[] {"a", "b", "ab"}), List.of("a", "b"));
+        Check.eq(Ch53Tries.keypadWords("", new String[] {"x"}), List.of());
+        Check.eq(Ch53Tries.keypadWords("9", words), List.of());
+    }
+}
+
+class Ex53_16Test {
+    public static void run() {
+        String[] words = {"car", "cat", "core", "tea", "rat", "bin", "rob", "cab", "tin", "ore", "rare"};
+        Check.eq(Ch53Tries.boardWords(new String[] {"cat", "ore", "bin"}, words), List.of("bin", "car", "cat", "core", "ore", "rat", "rob", "tea"));
+        Check.eq(Ch53Tries.boardWords(new String[] {"aa"}, new String[] {"aaa", "aa", "a"}), List.of("a", "aa"));
+        Check.eq(Ch53Tries.boardWords(new String[0], new String[] {"a"}), List.of());
+        Check.eq(Ch53Tries.boardWords(new String[] {"ab", "cd"}, new String[] {"abdc", "acdb", "adcb", "bad", "abca"}), List.of("abdc", "acdb", "adcb", "bad"));
+    }
+}

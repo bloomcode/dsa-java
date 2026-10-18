@@ -90,3 +90,34 @@ class Ex52_8Test {
         Check.eq(Ch52Heaps.mergeKSorted(new int[][]{{}, {3}}), List.of(3));
     }
 }
+
+class Ex52_9Test {
+    public static void run() {
+        Ch52Heaps.RunningMedian m = new Ch52Heaps.RunningMedian();
+        int[] first = {5, 15, 1, 3};
+        double[] want = {5.0, 10.0, 5.0, 4.0};
+        for (int i = 0; i < first.length; i++) {
+            m.add(first[i]);
+            Check.eq(m.median(), want[i]);
+        }
+        int[] stream = {8, -2, 7, 7, 0, 11, 3, 3, -5, 20};
+        m = new Ch52Heaps.RunningMedian();
+        for (int n = 1; n <= stream.length; n++) {
+            m.add(stream[n - 1]);
+            int[] s = Arrays.copyOf(stream, n);
+            Arrays.sort(s);
+            Check.eq(m.median(), n % 2 == 1 ? s[n / 2] : (s[n / 2 - 1] + s[n / 2]) / 2.0);
+        }
+    }
+}
+
+class Ex52_10Test {
+    public static void run() {
+        Check.eq(Ch52Heaps.sortNearlySorted(new int[] {3, 1, 2, 6, 4, 5, 9, 7, 8}, 2), new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9});
+        Check.eq(Ch52Heaps.sortNearlySorted(new int[0], 3), new int[0]);
+        Check.eq(Ch52Heaps.sortNearlySorted(new int[] {2, 1, 4, 3}, 1), new int[] {1, 2, 3, 4});
+        Check.eq(Ch52Heaps.sortNearlySorted(new int[] {1, 2, 3}, 0), new int[] {1, 2, 3});
+        Check.eq(Ch52Heaps.sortNearlySorted(new int[] {5, 4, 3, 2, 1}, 4), new int[] {1, 2, 3, 4, 5});
+        Check.eq(Ch52Heaps.sortNearlySorted(new int[] {2, 2, 1}, 2), new int[] {1, 2, 2});
+    }
+}
