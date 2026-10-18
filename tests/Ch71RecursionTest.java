@@ -163,3 +163,14 @@ class Ex71_18Test {
         Check.eq(Ch71Recursion.subsets(List.of(1, 2, 3, 4)).size(), 16);
     }
 }
+
+class Ex71_19Test {
+    public static void run() {
+        Check.eq(Ch71Recursion.lastStanding(5, 2), 3);
+        Check.eq(Ch71Recursion.lastStanding(1, 3), 1);
+        Check.eq(Ch71Recursion.lastStanding(7, 3), 4);
+        Check.eq(Ch71Recursion.lastStanding(6, 1), 6);
+        Check.eq(Ch71Recursion.lastStanding(10, 2), 5);
+        Check.eq(Ch71Recursion.lastStanding(2, 2), 1);
+    }
+}

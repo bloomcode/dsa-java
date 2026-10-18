@@ -212,3 +212,74 @@ class Ex21_19Test {
         Check.eq(d.toArray(), new int[]{1, 2, 3});
     }
 }
+
+class Ex21_20Test {
+    public static void run() {
+        Check.eq(Ch21Arrays.majority(new int[]{3, 1, 3, 3, 2, 3}), 3);
+        Check.eq(Ch21Arrays.majority(new int[]{7}), 7);
+        Check.eq(Ch21Arrays.majority(new int[]{2, 2, 1}), 2);
+        Check.eq(Ch21Arrays.majority(new int[]{1, 2, 1, 2, 1}), 1);
+        Check.eq(Ch21Arrays.majority(new int[]{5, 9, 9}), 9);
+    }
+}
+
+class Ex21_21Test {
+    public static void run() {
+        Check.eq(Ch21Arrays.productsExceptSelf(new int[]{2, 3, 4, 5}), new long[]{60, 40, 30, 24});
+        Check.eq(Ch21Arrays.productsExceptSelf(new int[]{1, 0, 3}), new long[]{0, 3, 0});
+        Check.eq(Ch21Arrays.productsExceptSelf(new int[]{0, 0}), new long[]{0, 0});
+        Check.eq(Ch21Arrays.productsExceptSelf(new int[]{5}), new long[]{1});
+        Check.eq(Ch21Arrays.productsExceptSelf(new int[]{-1, 2, -3}), new long[]{-6, 3, -2});
+    }
+}
+
+class Ex21_22Test {
+    public static void run() {
+        Check.eq(Ch21Arrays.longestMountain(new int[]{1, 3, 5, 4, 2, 2, 6, 1}), 5);
+        Check.eq(Ch21Arrays.longestMountain(new int[]{1, 2, 3}), 0);
+        Check.eq(Ch21Arrays.longestMountain(new int[]{3, 2, 1}), 0);
+        Check.eq(Ch21Arrays.longestMountain(new int[]{}), 0);
+        Check.eq(Ch21Arrays.longestMountain(new int[]{1, 3, 2, 4, 1}), 3);
+        Check.eq(Ch21Arrays.longestMountain(new int[]{1, 2, 1, 2, 3, 2, 1}), 5);
+    }
+}
+
+class Ex21_23Test {
+    public static void run() {
+        Check.eq(Ch21Arrays.smallestUnmakeable(new int[]{2, 1, 6}), 4L);
+        Check.eq(Ch21Arrays.smallestUnmakeable(new int[]{1, 1, 3}), 6L);
+        Check.eq(Ch21Arrays.smallestUnmakeable(new int[]{}), 1L);
+        Check.eq(Ch21Arrays.smallestUnmakeable(new int[]{2}), 1L);
+        Check.eq(Ch21Arrays.smallestUnmakeable(new int[]{1, 2, 4, 8}), 16L);
+    }
+}
+
+class Ex21_24Test {
+    public static void run() {
+        Check.eq(Ch21Arrays.lowestMissingPositive(new int[]{4, -2, 1, 9, 2}), 3);
+        Check.eq(Ch21Arrays.lowestMissingPositive(new int[]{2, 3}), 1);
+        Check.eq(Ch21Arrays.lowestMissingPositive(new int[]{1, 2, 3}), 4);
+        Check.eq(Ch21Arrays.lowestMissingPositive(new int[]{}), 1);
+        Check.eq(Ch21Arrays.lowestMissingPositive(new int[]{1, 1, 1}), 2);
+        Check.eq(Ch21Arrays.lowestMissingPositive(new int[]{0, -5, 3, 2, 1, 5}), 4);
+    }
+}
+
+class Ex21_25Test {
+    public static void run() {
+        Check.eq(Ch21Arrays.missingFromRange(new int[]{4, 1, 6}, 6), List.of(2, 3, 5));
+        Check.eq(Ch21Arrays.missingFromRange(new int[]{}, 3), List.of(1, 2, 3));
+        Check.eq(Ch21Arrays.missingFromRange(new int[]{2, 1}, 2), List.of());
+    }
+}
+
+class Ex21_26Test {
+    public static void run() {
+        int[] data = {3, 1, 4, 4, 1};
+        Check.eq(Ch21Arrays.firstRepeatInPlace(data), 4);
+        Check.eq(data, new int[]{3, 1, 4, 4, 1});
+        Check.eq(Ch21Arrays.firstRepeatInPlace(new int[]{1, 2, 3}), -1);
+        Check.eq(Ch21Arrays.firstRepeatInPlace(new int[]{2, 2}), 2);
+        Check.eq(Ch21Arrays.firstRepeatInPlace(new int[]{1, 3, 3, 1}), 3);
+    }
+}

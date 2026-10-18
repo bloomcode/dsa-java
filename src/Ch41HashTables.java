@@ -152,4 +152,70 @@ public class Ch41HashTables {
         throw new UnsupportedOperationException();
     }
     // ==== END
+
+    // ==== EX 41.11 | Longest consecutive run | Practice
+    // PROMPT: Write `static int longestConsecutive(int[] nums)` that returns the length of the longest run of consecutive integers found anywhere in `nums` (any order, repeats allowed), in O(N): put the values in a `HashSet` and count upward only from values whose predecessor is missing.
+    // EXAMPLE: `[10, 4, 20, 1, 3, 2, 11]` -> `4` (1, 2, 3, 4)
+    // BIGO: O(N) expected time and space: only a value with no predecessor starts a count, so every value is stepped over at most twice.
+    static int longestConsecutive(int[] nums) {
+        throw new UnsupportedOperationException();
+    }
+    // ==== END
+
+    // ==== EX 41.12 | Does a stretch sum to zero? | Core
+    // PROMPT: Write `static boolean hasZeroSumRun(int[] nums)`: `true` when some non-empty run of consecutive values sums to `0`. Keep a set of the prefix sums seen so far, starting with `0`; a repeated prefix sum means the values between the two sum to zero.
+    // EXAMPLE: `[4, 2, -3, 1, 6]` -> `true` (`2, -3, 1`); `[4, 2, 1]` -> `false`
+    // BIGO: O(N) expected time and space: a stretch sums to zero exactly when two prefix sums are equal, and a set spots the repeat.
+    static boolean hasZeroSumRun(int[] nums) {
+        throw new UnsupportedOperationException();
+    }
+    // ==== END
+
+    // ==== EX 41.13 | Count stretches summing to k | Practice
+    // PROMPT: Write `static int countSumRuns(int[] nums, int k)` that counts the non-empty runs of consecutive values summing to `k` (values may be negative), in O(N). Keep a map from each prefix sum to how often it has occurred, starting with `{0: 1}`; at each step add the count of `total - k`.
+    // EXAMPLE: `[1, 2, 3, -2, 2], 3` -> `4` (`1, 2`; `3`; `2, 3, -2`; `3, -2, 2`)
+    // BIGO: O(N) expected time and space: each prefix sum `p` pairs with every earlier prefix sum `p - k`, and a count table answers that in O(1).
+    static int countSumRuns(int[] nums, int k) {
+        throw new UnsupportedOperationException();
+    }
+    // ==== END
+
+    // ==== EX 41.14 | Symmetric pairs | Core
+    // PROMPT: `pairs` holds distinct pairs `{a, b}` with `a != b`. Write `static int[][] symmetricPairs(int[][] pairs)` that returns every pair whose reverse `{b, a}` also appears, once per couple: report the pair that came first, in the order the second one arrives.
+    // EXAMPLE: `[[1, 2], [3, 4], [5, 6], [4, 3], [2, 1]]` -> `[[3, 4], [1, 2]]`
+    // BIGO: O(N) expected time and space: one pass, checking each pair's reverse against the pairs already seen.
+    static int[][] symmetricPairs(int[][] pairs) {
+        throw new UnsupportedOperationException();
+    }
+    // ==== END
+
+    // ==== EX 41.15 | Trace a journey from its tickets | Practice
+    // PROMPT: `tickets` are `{origin, destination}` legs of one journey that visits no place twice, in shuffled order. Write `static List<String> traceJourney(String[][] tickets)` that returns the places in travel order (empty for no tickets). Map each origin to its destination; the start is the one origin that is nobody's destination.
+    // EXAMPLE: `[["MAA", "BOM"], ["DEL", "MAA"], ["BOM", "GOI"]]` -> `["DEL", "MAA", "BOM", "GOI"]`
+    // BIGO: O(N) expected time and space: one map from each origin to its destination, one set of destinations to find the start, then one walk.
+    static List<String> traceJourney(String[][] tickets) {
+        throw new UnsupportedOperationException();
+    }
+    // ==== END
+
+    // ==== EX 41.16 | Do two arrays share a value? | Core
+    // PROMPT: Write `static boolean disjoint(int[] a, int[] b)`: `true` when no value appears in both `a` and `b`. Build a `HashSet` from `a` and check each value of `b` against it.
+    // EXAMPLE: `[1, 5, 9], [2, 6]` -> `true`; `[1, 5], [5]` -> `false`
+    // BIGO: O(N + M) expected time, O(N) space: build a set from one array and probe it with the other.
+    static boolean disjoint(int[] a, int[] b) {
+        throw new UnsupportedOperationException();
+    }
+    // ==== END
+
+    // ==== EX 41.17 | Most points on one line | Stretch
+    // PROMPT: `points` are `{x, y}` integer pairs, possibly repeated. Write `static int mostOnALine(int[][] points)` that returns the largest number of them on one straight line. For each anchor point, count the other points by direction `(dx, dy)` reduced by their gcd with a fixed sign; copies of the anchor count on every line through it.
+    // EXAMPLE: `[[0, 0], [1, 1], [2, 2], [3, 1], [0, 3]]` -> `3`
+    // BIGO: O(N^2) expected time, O(N) space: for each anchor point, every other point's direction, reduced by the gcd, is a hash key for the line through both.
+    // NOTE: Reducing `(dx, dy)` by their gcd and fixing the sign gives an exact key; a floating-point slope would make nearly equal slopes collide or differ.
+    static int mostOnALine(int[][] points) {
+        throw new UnsupportedOperationException();
+    }
+
+    static int gcd(int a, int b) { throw new UnsupportedOperationException(); }
+    // ==== END
 }

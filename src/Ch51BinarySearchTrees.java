@@ -129,4 +129,62 @@ public class Ch51BinarySearchTrees {
         throw new UnsupportedOperationException();
     }
     // ==== END
+
+    // ==== EX 51.11 | Closest value | Core
+    // PROMPT: Write `static int closestValue(TreeNode root, int target)` that returns the value in a non-empty BST nearest to `target` (on a tie, the smaller value), walking one path down as a search would.
+    // EXAMPLE: Tree from `{50, 25, 75, 10, 33}`, `30` -> `33`
+    // BIGO: O(H) time for height H, O(1) space: the search path is the only place a closer value can be, because each step away from it moves further from the target.
+    static int closestValue(TreeNode root, int target) {
+        throw new UnsupportedOperationException();
+    }
+    // ==== END
+
+    // ==== EX 51.12 | Balanced tree from a sorted array | Practice
+    // PROMPT: Write `static TreeNode balancedBst(int[] values)` that builds a BST of minimum height from sorted, distinct `values` and returns its root (`null` when empty): the middle value (index `(lo + hi) / 2`) becomes the root, and each half builds a subtree the same way.
+    // EXAMPLE: `[1, 2, 3, 4, 5, 6, 7]` -> root `4` with children `2` and `6`
+    // BIGO: O(N) time, O(log N) stack: each value becomes a node once, and taking the middle each time keeps both sides within one node of each other.
+    static TreeNode balancedBst(int[] values) { throw new UnsupportedOperationException(); }
+
+    static TreeNode buildBalanced(int[] values, int lo, int hi) {
+        throw new UnsupportedOperationException();
+    }
+    // ==== END
+
+    // ==== EX 51.13 | K-th largest value | Practice
+    // PROMPT: Write `static int kthLargest(TreeNode root, int k)` that returns the `k`-th largest value in a BST (`1 <= k <=` number of nodes) without visiting the whole tree: walk right subtree, node, left subtree with an explicit stack, and stop at the `k`-th node visited.
+    // EXAMPLE: Tree from `{50, 25, 75, 10, 33}`, `2` -> `50`
+    // BIGO: O(H + K) time, O(H) space: a reverse in-order walk meets values from largest down and stops at the k-th.
+    static int kthLargest(TreeNode root, int k) {
+        throw new UnsupportedOperationException();
+    }
+    // ==== END
+
+    // ==== EX 51.14 | Rebuild a BST from its preorder | Practice
+    // PROMPT: `values` is the preorder listing of a BST with distinct values. Write `static TreeNode bstFromPreorder(int[] values)` that rebuilds the tree in O(N) and returns its root: read values in order, and let each recursive call accept only values below the bound its parent gives it.
+    // EXAMPLE: `[40, 20, 10, 30, 60, 70]` -> root `40`, left `20` (children `10`, `30`), right `60` (right child `70`)
+    // BIGO: O(N) time, O(H) stack: each value is read once, and the upper bound passed down says when a subtree has ended.
+    static TreeNode bstFromPreorder(int[] values) { throw new UnsupportedOperationException(); }
+
+    static TreeNode buildFromPreorder(int[] values, int[] next, long bound) {
+        throw new UnsupportedOperationException();
+    }
+    // ==== END
+
+    // ==== EX 51.15 | In-order successor | Practice
+    // PROMPT: Write `static Integer successor(TreeNode root, int value)` that returns the next larger value after `value` in a BST, or `null` when `value` is the largest. `value` need not be in the tree. Walk down from the root, remembering the last node where you turned left.
+    // EXAMPLE: Tree from `{50, 25, 75, 10, 33}`, `33` -> `50`; `75` -> `null`
+    // BIGO: O(H) time, O(1) space: every time the search turns left, that node is the best successor so far.
+    static Integer successor(TreeNode root, int value) {
+        throw new UnsupportedOperationException();
+    }
+    // ==== END
+
+    // ==== EX 51.16 | Repair two swapped values | Stretch
+    // PROMPT: Exactly two values of a BST were swapped. Write `static void repairSwapped(TreeNode root)` that swaps them back in place without rebuilding the tree. Walk in order with an explicit stack: the first descent's larger value is one culprit, and the last descent's smaller value is the other.
+    // EXAMPLE: `50 -> (75 -> 10, 33), 25` (`25` and `75` swapped) -> `50 -> (25 -> 10, 33), 75`
+    // BIGO: O(N) time, O(H) space: in-order, a BST reads ascending, so the swapped pair shows up as one or two descents in that sequence.
+    static void repairSwapped(TreeNode root) {
+        throw new UnsupportedOperationException();
+    }
+    // ==== END
 }

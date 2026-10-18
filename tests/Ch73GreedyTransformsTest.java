@@ -85,3 +85,80 @@ class Ex73_9Test {
         Check.eq(Ch73GreedyTransforms.longestUniqueRun("tmmzuxt"), 5);
     }
 }
+
+class Ex73_10Test {
+    public static void run() {
+        Check.eq(Ch73GreedyTransforms.leastTotalWaiting(new int[] {3, 2, 1, 2, 6}), 17L);
+        Check.eq(Ch73GreedyTransforms.leastTotalWaiting(new int[0]), 0L);
+        Check.eq(Ch73GreedyTransforms.leastTotalWaiting(new int[] {5}), 0L);
+        Check.eq(Ch73GreedyTransforms.leastTotalWaiting(new int[] {4, 1}), 1L);
+        Check.eq(Ch73GreedyTransforms.leastTotalWaiting(new int[] {2, 2, 2}), 6L);
+    }
+}
+
+class Ex73_11Test {
+    public static void run() {
+        Check.eq(Ch73GreedyTransforms.pairFinishTime(new int[] {5, 2, 1, 6, 4, 4}), 8);
+        Check.eq(Ch73GreedyTransforms.pairFinishTime(new int[] {1, 2}), 3);
+        Check.eq(Ch73GreedyTransforms.pairFinishTime(new int[] {3, 3, 3, 3}), 6);
+        Check.eq(Ch73GreedyTransforms.pairFinishTime(new int[] {1, 9, 2, 8}), 10);
+    }
+}
+
+class Ex73_12Test {
+    public static void run() {
+        Check.yes(Ch73GreedyTransforms.canTakePhoto(new int[] {5, 8, 1, 3, 4}, new int[] {6, 9, 2, 4, 5}));
+        Check.no(Ch73GreedyTransforms.canTakePhoto(new int[] {1, 2}, new int[] {1, 3}));
+        Check.no(Ch73GreedyTransforms.canTakePhoto(new int[] {3}, new int[] {3}));
+        Check.yes(Ch73GreedyTransforms.canTakePhoto(new int[] {6, 5}, new int[] {4, 4}));
+        Check.no(Ch73GreedyTransforms.canTakePhoto(new int[] {1, 9}, new int[] {5, 5}));
+    }
+}
+
+class Ex73_13Test {
+    public static void run() {
+        Check.eq(Ch73GreedyTransforms.tandemTotal(new int[] {5, 5, 3, 9, 2}, new int[] {3, 6, 7, 2, 1}, true), 32);
+        Check.eq(Ch73GreedyTransforms.tandemTotal(new int[] {5, 5, 3, 9, 2}, new int[] {3, 6, 7, 2, 1}, false), 25);
+        Check.eq(Ch73GreedyTransforms.tandemTotal(new int[] {1}, new int[] {1}, true), 1);
+        Check.eq(Ch73GreedyTransforms.tandemTotal(new int[] {1, 4}, new int[] {5, 2}, true), 9);
+        Check.eq(Ch73GreedyTransforms.tandemTotal(new int[] {1, 4}, new int[] {5, 2}, false), 7);
+    }
+}
+
+class Ex73_14Test {
+    public static void run() {
+        Check.eq(Ch73GreedyTransforms.loopStart(new int[] {1, 5, 3, 3, 1}, new int[] {3, 2, 4, 1, 1}), 1);
+        Check.eq(Ch73GreedyTransforms.loopStart(new int[] {2, 2}, new int[] {3, 3}), -1);
+        Check.eq(Ch73GreedyTransforms.loopStart(new int[] {3}, new int[] {2}), 0);
+        Check.eq(Ch73GreedyTransforms.loopStart(new int[] {1, 2, 3}, new int[] {2, 3, 1}), 2);
+    }
+}
+
+class Ex73_15Test {
+    public static void run() {
+        Check.eq(Ch73GreedyTransforms.fewestRewards(new int[] {4, 2, 6, 3, 3, 1}), 9);
+        Check.eq(Ch73GreedyTransforms.fewestRewards(new int[0]), 0);
+        Check.eq(Ch73GreedyTransforms.fewestRewards(new int[] {5}), 1);
+        Check.eq(Ch73GreedyTransforms.fewestRewards(new int[] {1, 2, 3}), 6);
+        Check.eq(Ch73GreedyTransforms.fewestRewards(new int[] {3, 3, 3}), 3);
+        Check.eq(Ch73GreedyTransforms.fewestRewards(new int[] {1, 3, 2}), 4);
+        Check.eq(Ch73GreedyTransforms.fewestRewards(new int[] {5, 4, 3, 2, 1}), 15);
+    }
+}
+
+class Ex73_16Test {
+    public static void run() {
+        Check.eq(Ch73GreedyTransforms.bestScheduleProfit(new int[][] {{2, 50}, {1, 10}, {2, 40}, {1, 30}, {3, 20}}), 110);
+        Check.eq(Ch73GreedyTransforms.bestScheduleProfit(new int[0][]), 0);
+        Check.eq(Ch73GreedyTransforms.bestScheduleProfit(new int[][] {{1, 5}, {1, 9}}), 9);
+        Check.eq(Ch73GreedyTransforms.bestScheduleProfit(new int[][] {{3, 1}, {3, 2}, {3, 3}, {3, 4}}), 9);
+    }
+}
+
+class Ex73_17Test {
+    public static void run() {
+        Check.eq(Ch73GreedyTransforms.stableMatching(new int[][] {{0, 1, 2}, {0, 2, 1}, {1, 0, 2}}, new int[][] {{1, 0, 2}, {0, 1, 2}, {0, 1, 2}}), new int[] {1, 0, 2});
+        Check.eq(Ch73GreedyTransforms.stableMatching(new int[][] {{0}}, new int[][] {{0}}), new int[] {0});
+        Check.eq(Ch73GreedyTransforms.stableMatching(new int[][] {{0, 1}, {0, 1}}, new int[][] {{1, 0}, {1, 0}}), new int[] {1, 0});
+    }
+}

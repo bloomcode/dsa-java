@@ -1,5 +1,6 @@
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Deque;
 import java.util.List;
 
@@ -137,6 +138,127 @@ public class Ch24StacksQueues {
         Integer dequeue() {
             throw new UnsupportedOperationException();
         }
+    }
+    // ==== END
+
+    // ==== EX 24.10 | Min-max stack | Core
+    // PROMPT: Build `static class MinMaxStack` with `void push(int value)`, `int pop()`, `int peek()`, `int min()` and `int max()`, every one O(1). Store each value together with the minimum and maximum of the stack at the moment it was pushed. Callers never pop or read an empty stack.
+    // EXAMPLE: push 5, 2, 8 -> `min()` is `2`, `max()` is `8`; `pop()` -> `8`; `max()` is `5`
+    // BIGO: O(1) per operation, O(N) space: each entry stores the minimum and maximum of itself and everything below it, so popping restores the old ones for free.
+    static class MinMaxStack {
+        private final Deque<int[]> entries = new ArrayDeque<>();
+
+        void push(int value) {
+            throw new UnsupportedOperationException();
+        }
+
+        int pop() { throw new UnsupportedOperationException(); }
+
+        int peek() { throw new UnsupportedOperationException(); }
+
+        int min() { throw new UnsupportedOperationException(); }
+
+        int max() { throw new UnsupportedOperationException(); }
+    }
+    // ==== END
+
+    // ==== EX 24.11 | Next greater value | Core
+    // PROMPT: Write `static int[] nextGreater(int[] nums)` that returns, for each index, the first value to its right that is larger, or `-1`. Keep a stack of indices still waiting (an `ArrayDeque<Integer>`); each new value settles every waiting index with a smaller value.
+    // EXAMPLE: `[2, 7, 3, 5, 4, 6, 8]` -> `[7, 8, 5, 6, 6, 8, -1]`
+    // BIGO: O(N) time and space: each index is pushed and popped at most once, and the stack always holds indices still waiting for a larger value.
+    static int[] nextGreater(int[] nums) {
+        throw new UnsupportedOperationException();
+    }
+    // ==== END
+
+    // ==== EX 24.12 | Sunset view | Core
+    // PROMPT: `heights` lists buildings from west to east, and the sun sets in the east. Write `static List<Integer> sunsetView(int[] heights)` that returns, in ascending order, the indices of the buildings strictly taller than every building east of them. Scan west to east with a stack, popping every building that is not taller than the new one.
+    // EXAMPLE: `[3, 5, 4, 4, 3, 1, 3, 2]` -> `[1, 3, 6, 7]`
+    // BIGO: O(N) time and space: a building that is not taller than a later one can never see past it, so it leaves the stack for good.
+    static List<Integer> sunsetView(int[] heights) {
+        throw new UnsupportedOperationException();
+    }
+    // ==== END
+
+    // ==== EX 24.13 | Largest rectangle under a bar chart | Stretch
+    // PROMPT: `heights` are the bars of a chart, each 1 wide. Write `static int largestRectangle(int[] heights)` that returns the largest rectangle area that fits under the bars. Keep a stack of `{start, height}` with rising heights; a lower bar pops every taller entry, scoring `height * (i - start)`, and inherits the start of the last one popped. A final zero-height bar empties the stack.
+    // EXAMPLE: `[2, 4, 3, 5, 1, 3]` -> `9` (height 3 across the bars `4, 3, 5`)
+    // BIGO: O(N) time and space: a bar is popped exactly when the first lower bar to its right appears, and the entry below it says how far left it reaches.
+    static int largestRectangle(int[] heights) {
+        throw new UnsupportedOperationException();
+    }
+    // ==== END
+
+    // ==== EX 24.14 | Sort a stack with one more stack | Practice
+    // PROMPT: Write `static Deque<Integer> sortStack(Deque<Integer> stack)` that empties `stack` (used with `push`, `pop` and `peek`) into a new stack whose largest value is on top and returns it, using only those three operations on the two stacks: pop a value, move every larger value from the new stack back onto the old one, then push it.
+    // EXAMPLE: push 3, 1, 4, 2 -> popping the result gives `4, 3, 2, 1`
+    // BIGO: O(N^2) time, O(N) space for the second stack: each value may have to move every larger value aside before it settles.
+    static Deque<Integer> sortStack(Deque<Integer> stack) {
+        throw new UnsupportedOperationException();
+    }
+    // ==== END
+
+    // ==== EX 24.15 | Collisions on a track | Practice
+    // PROMPT: `carts` lists carts on a track from left to right: the size is the absolute value, and the sign is the direction (positive moves right). When two meet, the smaller one is destroyed; equal sizes destroy each other. Write `static List<Integer> afterCollisions(int[] carts)` that returns the carts left, in order. A stack of survivors works: only a left-mover arriving at a right-mover on top collides.
+    // EXAMPLE: `[-3, 4, 9, -6, 2, -2, 7]` -> `[-3, 4, 9, 7]`
+    // BIGO: O(N) time and space: every cart is pushed once and destroyed at most once.
+    static List<Integer> afterCollisions(int[] carts) {
+        throw new UnsupportedOperationException();
+    }
+    // ==== END
+
+    // ==== EX 24.16 | Window maximum with a deque | Practice
+    // PROMPT: Write `static int[] windowMax(int[] nums, int k)` that returns the maximum of every window of `k` consecutive values (`1 <= k <= nums.length`), in O(N). Keep an `ArrayDeque<Integer>` of indices whose values fall from front to back: drop smaller values from the back before adding, and drop the front once it leaves the window.
+    // EXAMPLE: `[4, 2, 12, 3, 8, 1, 7], 3` -> `[12, 12, 12, 8, 8]`
+    // BIGO: O(N) time, O(K) space: the deque keeps indices of falling values, so its front is the window's maximum, and each index enters and leaves once.
+    static int[] windowMax(int[] nums, int k) {
+        throw new UnsupportedOperationException();
+    }
+    // ==== END
+
+    // ==== EX 24.17 | Longest balanced bracket run | Practice
+    // PROMPT: `s` holds only `(` and `)`. Write `static int longestBalanced(String s)` that returns the length of the longest substring of correctly matched brackets. Keep a stack of indices starting with `-1`: push each `(`; on `)` pop, then either measure from the new top or, if the stack is empty, push this index as the new boundary.
+    // EXAMPLE: `"(()())())("` -> `8`
+    // BIGO: O(N) time and space: the stack holds open-bracket indices above the index of the last unmatched close, which marks where a balanced run can start.
+    static int longestBalanced(String s) {
+        throw new UnsupportedOperationException();
+    }
+    // ==== END
+
+    // ==== EX 24.18 | Stack from a queue | Core
+    // PROMPT: Build `static class QueueStack` with `void push(int value)`, `int pop()`, `int peek()` and `boolean isEmpty()` on one `ArrayDeque<Integer>` used only as a queue (`offer`, `poll`, `peek`, `size`). After offering, rotate the older values from the front to the back so the newest is in front. Callers never pop or peek an empty stack.
+    // EXAMPLE: push 1, 2, 3; `pop()` -> `3`; `peek()` -> `2`
+    // BIGO: O(N) push, O(1) pop and peek: after each push the queue is rotated so the newest value is at the front.
+    static class QueueStack {
+        private final ArrayDeque<Integer> queue = new ArrayDeque<>();
+
+        void push(int value) {
+            throw new UnsupportedOperationException();
+        }
+
+        int pop() { throw new UnsupportedOperationException(); }
+
+        int peek() { throw new UnsupportedOperationException(); }
+
+        boolean isEmpty() { throw new UnsupportedOperationException(); }
+    }
+    // ==== END
+
+    // ==== EX 24.19 | Reverse the first k of a queue | Core
+    // PROMPT: Write `static Deque<Integer> reverseFirstK(Deque<Integer> queue, int k)` that reverses the first `k` values in place (`0 <= k <= size`) and returns `queue`, using only queue operations (`offer`, `poll`) on it and a second `ArrayDeque` as a stack (`push`, `pop`): move `k` values onto the stack, offer them back, then rotate the remaining `size - k` values from the front to the back.
+    // EXAMPLE: `[1, 2, 3, 4, 5], 3` -> `[3, 2, 1, 4, 5]`
+    // BIGO: O(N) time, O(K) space for the stack: k values go through the stack, then the other N - k rotate to the back once.
+    static Deque<Integer> reverseFirstK(Deque<Integer> queue, int k) {
+        throw new UnsupportedOperationException();
+    }
+    // ==== END
+
+    // ==== EX 24.20 | Binary numbers 1 to n with a queue | Core
+    // PROMPT: Write `static List<String> binaryNumbers(int n)` that returns the binary forms of `1` to `n` as strings, in order, without converting numbers: start an `ArrayDeque<String>` with `"1"`, and each time you take a string from the front, record it and add it with `"0"` and `"1"` appended to the back.
+    // EXAMPLE: `5` -> `["1", "10", "11", "100", "101"]`
+    // BIGO: O(N log N) time and space: N strings of about log N digits each, every one produced by appending a digit to an earlier one.
+    static List<String> binaryNumbers(int n) {
+        throw new UnsupportedOperationException();
     }
     // ==== END
 }
