@@ -5,29 +5,35 @@ import java.util.regex.Pattern;
 
 /**
  * Runs every exercise test class (Ex3_2Test, ...) found in the output directory and reports results.
- * Usage: java -cp out RunAll out [3.2 | 3]   (one exercise, one chapter, or everything)
+ * Usage: java -cp out RunAll out [3.2 | 3]   (one exercise, one chapter, or everything; dsa ids look like 2.5.3 and 2.5)
  */
 public final class RunAll {
-    private static final Pattern NAME = Pattern.compile("Ex(\\d+)_(\\d+)Test");
+    private static final Pattern NAME = Pattern.compile("Ex((?:\\d+_)*\\d+)_(\\d+)Test");
 
     public static void main(String[] args) throws Exception {
         File[] files = new File(args.length > 0 ? args[0] : "out").listFiles();
         String only = args.length > 1 ? args[1] : null;
-        List<int[]> ids = new ArrayList<>();
+        List<int[]> ids = new ArrayList<>(); // chapter numbers, then the exercise number
         for (File f : files == null ? new File[0] : files) {
             Matcher m = NAME.matcher(f.getName().replace(".class", ""));
             if (!f.getName().endsWith(".class") || !m.matches()) continue;
-            int ch = Integer.parseInt(m.group(1)), num = Integer.parseInt(m.group(2));
-            if (only == null || only.equals(ch + "." + num) || only.equals(String.valueOf(ch))) ids.add(new int[]{ch, num});
+            String ch = m.group(1).replace('_', '.'), label = ch + "." + m.group(2);
+            if (only == null || only.equals(label) || only.equals(ch))
+                ids.add(Arrays.stream(label.split("\\.")).mapToInt(Integer::parseInt).toArray());
         }
-        ids.sort(Comparator.<int[]>comparingInt(a -> a[0]).thenComparingInt(a -> a[1]));
+        ids.sort(Arrays::compare);
         if (ids.isEmpty()) {
             System.out.println("no exercise tests found" + (only == null ? "" : " for " + only));
             System.exit(1);
         }
         int failed = 0;
         for (int[] id : ids) {
-            String name = "Ex" + id[0] + "_" + id[1] + "Test", label = id[0] + "." + id[1];
+            StringJoiner under = new StringJoiner("_"), dot = new StringJoiner(".");
+            for (int x : id) {
+                under.add(String.valueOf(x));
+                dot.add(String.valueOf(x));
+            }
+            String name = "Ex" + under + "Test", label = dot.toString();
             try {
                 Class.forName(name).getMethod("run").invoke(null);
                 System.out.println("PASS " + label);
